@@ -2,8 +2,8 @@ import { Router } from 'express';
 
 const router = Router();
 
-router.get('/',(req,res)=>{
-    return res.json({Challenge :'BossaBox'});
-})
+import toolsController from './app/controllers/toolsController';
+
+router.get('/',toolsController.store);
 
 export default router;
