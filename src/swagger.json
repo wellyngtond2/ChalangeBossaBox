@@ -1,0 +1,209 @@
+{
+    "swagger": "2.0",
+    "info":{
+        "version": "1.0.0",
+        "title": "Very Useful Tools to Remember",
+        "description": "This is a simple repository for management tools with their names, links, description and tags, respectively.",
+        "contact":{
+            "email": "wellyngton_borges@hotmail.com"
+                  },
+    "license":{
+    "name": "MIT",
+    "url": "https://opensource.org/licenses/mit"
+              }
+           },
+           "paths": {
+            "/tools": {
+              "post": {
+                "tags": [
+                  "tools"
+                ],
+                "summary": "Add a new tool",
+                "description": "",
+                "operationId": "addTool",
+                "consumes": [
+                  "application/json"
+                ],
+                "produces": [
+                  "application/json"
+                ],
+                "parameters": [
+                  {
+                    "in": "body",
+                    "name": "body",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                                   "properties":{
+                                     "title":{
+                                       "type": "string"},
+                                     "link":{
+                                       "type": "string"},
+                                     "description":{
+                                       "type": "string"},
+                                     "tags":{
+                                       "type":"array",
+                                        "items":{
+                                            "type": "string"
+                                        }
+
+                                }
+                    }
+                  }
+                }
+                ],
+                "responses": {
+                  "201": {
+                    "description": "Tools created successfully"
+                  },
+                  "400": {
+                    "description": "Bad storege, tools no created"
+                  }
+                }
+              },
+              "get": {
+                "tags": [
+                  "tools"
+                ],
+                "summary": "Get all tools",
+                "description": "",
+                "operationId": "GetTools",
+                "consumes": [
+                  "application/json"
+                ],
+                "produces": [
+                  "application/json"
+                ],
+                "parameters": [],
+                "responses": {
+                  "200": {
+                    "description": "Request successfully",
+                    "schema": {
+                        "type": "object",
+                        "properties":{
+                            "_id":{
+                                "type": "string"},
+                            "title":{
+                              "type": "string"},
+                            "link":{
+                              "type": "string"},
+                            "description":{
+                              "type": "string"},
+                            "tags":{
+                              "type":"array",
+                               "items":{
+                                   "type": "string"
+                               }},
+                            "createdAt":{
+                                 "type": "string"},
+                            "updatedAt":{
+                                   "type": "string"}
+
+                       }
+                      }
+                  },
+                  "400": {
+                    "description": "Bad request"
+                  }
+                }
+              }
+              },
+            "/tools?tag={tag}": {
+                "get": {
+                    "tags": [
+                      "tools"
+                    ],
+                    "summary": "Get all tools by tag",
+                    "description": "",
+                    "operationId": "GetToolsByTag",
+                    "consumes": [
+                      "application/json"
+                    ],
+                    "produces": [
+                      "application/json"
+                    ],
+                    "parameters": [
+                        {
+                        "in": "query",
+                        "name": "tag",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "description": "The name of tags in tools"
+                        }
+
+                        }],
+                    "responses": {
+                      "200": {
+                        "description": "Request successfully",
+                        "schema": {
+                            "type": "object",
+                            "properties":{
+                                "_id":{
+                                    "type": "string"},
+                                "title":{
+                                  "type": "string"},
+                                "link":{
+                                  "type": "string"},
+                                "description":{
+                                  "type": "string"},
+                                "tags":{
+                                  "type":"array",
+                                   "items":{
+                                       "type": "string"
+                                   }},
+                                "createdAt":{
+                                     "type": "string"},
+                                "updatedAt":{
+                                       "type": "string"}
+
+                           }
+                          }
+                      },
+                      "400": {
+                        "description": "Bad request"
+                      }
+                    }
+                  }
+            },
+            "/tools/{id}": {
+                "delete": {
+                    "tags": [
+                      "tools"
+                    ],
+                    "summary": "Delete tool by id",
+                    "description": "",
+                    "operationId": "DeleteTool",
+                    "consumes": [
+                      "application/json"
+                    ],
+                    "produces": [
+                      "application/json"
+                    ],
+                    "parameters": [
+                        {
+                        "in": "path",
+                        "name": "id",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "description": "The id of tool"
+                        }
+
+                        }],
+                    "responses": {
+                      "204": {
+                        "description": "Tool successfully deleted"
+                      },
+                      "400": {
+                        "description": "Bad request"
+                      }
+                    }
+                  }
+            }
+
+            }
+
+}
+
+

@@ -1,28 +1,42 @@
-import express from 'express';
-import mongoose from 'mongoose';
-import routes from './routes';
+import express from "express";
+import mongoose from "mongoose";
+import swaggerUi from "swagger-ui-express";
+import routes from "./routes";
+import mongoConfig from "./app/Config/mongodb";
+import * as swaggerDoc from "./swagger.json";
 
 class App {
-  constructor() {
-    this.server = express();
+    constructor() {
+        this.server = express();
+        this.subpath = express();
+        this.middlewares();
+        this.routes();
+        this.mongo();
+        this.Swagger();
+    }
 
-    this.middlewares();
-    this.routes();
-    this.mongo();
-  }
+    middlewares() {
+        this.server.use(express.json());
+    }
 
-  middlewares() {
-    this.server.use(express.json());
-  }
+    routes() {
+        this.server.use(routes);
+    }
 
-  routes() {
-    this.server.use(routes);
-  }
+    mongo() {
+        this.mongoConnection = mongoose.connect(
+            mongoConfig.urlConnection,
+            mongoConfig.param
+        );
+    }
 
-  mongo() {
-    this.mongoConnection = mongoose.connect('mongodb+srv://wellyngton_borges@hotmail.com:yerm0506*@cluster0-nfxwv.mongodb.net/test?retryWrites=true&w=majority',
-      { useNewUrlParser: true });
-  }
+    Swagger() {
+        this.server.use(
+            "/swagger",
+            swaggerUi.serve,
+            swaggerUi.setup(swaggerDoc)
+        );
+    }
 }
 
 export default new App().server;
