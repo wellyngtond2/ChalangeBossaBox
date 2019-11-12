@@ -1,8 +1,8 @@
-import ToolsSchema from "../Schemas/toolsSchemas";
+import ToolsSchema from '../Schemas/toolsSchema';
 
 const Create = async function store(data) {
     if (!data.title) {
-        data.title = "";
+        data.title = '';
         return data;
     }
     const tools = ToolsSchema.create(data);

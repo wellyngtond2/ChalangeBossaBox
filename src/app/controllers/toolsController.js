@@ -1,4 +1,4 @@
-import toolsService from "../Services/toolsServices";
+import toolsService from '../Services/toolsServices';
 // const schema = Yup.object.shape({});
 
 class ToolsController {
@@ -14,7 +14,7 @@ class ToolsController {
 
     async delete(req, res) {
         await toolsService.Delete(req.params.id);
-        return res.status(204).json({ message: "Tool successfully deleted" });
+        return res.status(204).json({ message: 'Tool successfully deleted' });
     }
 }
 

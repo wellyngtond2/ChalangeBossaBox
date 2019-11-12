@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const toolsSchema = new mongoose.Schema(
     {
@@ -6,11 +6,11 @@ const toolsSchema = new mongoose.Schema(
         title: String,
         link: String,
         description: String,
-        tags: [String]
+        tags: [String],
     },
     {
-        timestamps: true
+        timestamps: true,
     }
 );
 
-export default mongoose.model("tools", toolsSchema);
+export default mongoose.model('tools', toolsSchema);
