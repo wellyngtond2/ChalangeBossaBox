@@ -1,9 +1,9 @@
-import express from "express";
-import mongoose from "mongoose";
-import swaggerUi from "swagger-ui-express";
-import routes from "./routes";
-import mongoConfig from "./app/Config/mongodb";
-import * as swaggerDoc from "./swagger.json";
+import express from 'express';
+import mongoose from 'mongoose';
+import swaggerUi from 'swagger-ui-express';
+import routes from './routes';
+import mongoConfig from './app/Config/mongodb';
+import * as swaggerDoc from './swagger.json';
 
 class App {
     constructor() {
@@ -32,7 +32,7 @@ class App {
 
     Swagger() {
         this.server.use(
-            "/swagger",
+            '/swagger',
             swaggerUi.serve,
             swaggerUi.setup(swaggerDoc)
         );

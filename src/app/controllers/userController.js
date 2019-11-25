@@ -3,11 +3,18 @@ import userService from '../Services/userServices';
 
 class UserController {
     async store(req, res) {
-        if (!req.body.email)
-            return res.status(400).json({ error: 'Email field invalid' });
+        const user = await userService.Create(req.body);
+        return res.status(201).json({ user });
+    }
 
-        const tools = await userService.Create(req.body);
-        return res.status(201).json({ tools });
+    async Get(req, res) {
+        const { email } = req.body;
+
+        if (email === undefined)
+            return res.status(201).json({ error: 'Email field invalid' });
+
+        const user = await userService.Get(email);
+        return res.status(201).json({ user });
     }
 }
 
