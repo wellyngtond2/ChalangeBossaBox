@@ -15,7 +15,7 @@
     "babel-eslint": "^10.0.3",
     "express": "^4.17.1",
     "jwt": "^0.2.0",
-    "mongoose": "^5.7.1",
+    "mongoose": "^5.7.5",
     "sequelize": "^5.19.8",
     "swagger-jsdoc": "^3.4.0",
     "swagger-ui-express": "^4.1.1",
