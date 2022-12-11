@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "babel-eslint": "^10.0.3",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "jwt": "^0.2.0",
     "mongoose": "^5.7.1",
     "sequelize": "^5.19.8",
